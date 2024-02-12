@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useAuthContext } from '../context/AuthContext';
@@ -14,7 +14,7 @@ const useSignup = () => {
         setloading(true);
 
         try {
-            const res = await fetch("http://localhost:8000/api/auth/signup",{
+            const res = await fetch("/api/auth/signup",{
                 method: 'POST',
                 headers:{"Content-Type": "application/json"},
                 body: JSON.stringify({fullname:fullName,username,password,confirmPassword,gender})
