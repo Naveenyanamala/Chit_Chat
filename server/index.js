@@ -5,13 +5,19 @@ import authRoutes from './routes/auth.routes.js';
 import messageRoutes from './routes/message.routes.js';
 import userRoutes from './routes/user.routes.js'
 import ConnectDB from './db/connectToMongoDB.js';
-
+import cors from 'cors';
 
 dotenv.config();
 const app=express();
 app.use(cookieParser());
 app.use(express.json())
 const PORT= process.env.PORT || 5000
+app.use(cors());
+// app.use(cors({
+//     origin: 'http://localhost:8000',
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     credentials: true,
+// }));
 
 
 app.use('/api/auth',authRoutes);
@@ -28,7 +34,7 @@ app.use('/api/users',userRoutes);
 const start = async () => {
     try {
         app.listen(PORT,()=>{
-            ConnectDB();
+            ConnectDB(); 
             console.log(`Server running on http://localhost:${PORT}`)
         });
     } catch (error) {

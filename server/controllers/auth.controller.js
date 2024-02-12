@@ -20,8 +20,8 @@ export const signup =async (req,res) =>{
 
         // https://avatar-plcaeholder.iran.liara.run/
 
-        const boyProfilePic ='https://avatar.iran.liara.run/public/boy?username=${username}'
-        const girlPorfilePic= 'https://avatar.iran.liara.run/public/girl?username=${username}'
+        const boyProfilePic =`https://avatar.iran.liara.run/public/boy?username=${username}`
+        const girlPorfilePic= `https://avatar.iran.liara.run/public/girl?username=${username}`
         const newUser= new User({
             fullname,
             username,
@@ -37,17 +37,17 @@ export const signup =async (req,res) =>{
                 _id:newUser._id,
                 fullname:newUser.fullname,
                 username:newUser.username,
-                 profilePic:newUser.profilePic
+                profilePic:newUser.profilePic
             });
         }else{
             res.status(400).json({error:`invalid user data`});
         }
 
     } catch (error) {
-        
+        console.log(`error in signup`);
         res.status(500).json({error:`Internal server error`});
     }
-}
+};
 
 export const login = async (req,res) =>{
    try {
@@ -67,10 +67,10 @@ export const login = async (req,res) =>{
     });
 
    } catch (error) {
-    
+        console.log(`error in login`);
         res.status(500).json({error:`Internal server error`});
    }
-}
+};
 
 export const logout = (req,res) =>{
     try {
@@ -80,4 +80,4 @@ export const logout = (req,res) =>{
         
         res.status(500).json({error:`Internal server error`});
     }
-}
+};
