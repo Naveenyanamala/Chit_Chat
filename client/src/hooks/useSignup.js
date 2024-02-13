@@ -28,7 +28,7 @@ const useSignup = () => {
             }
             // local storage using
             // context
-            localStorage.getItem("Auth-info",JSON.stringify(data));
+            localStorage.setItem("Auth-info",JSON.stringify(data));
             setAuthUser(data);
             
         } catch (error) {
